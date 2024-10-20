@@ -1,0 +1,560 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>Dsaynt Clothing Brand</title>
+    <link rel="stylesheet" href="Dsaynt.css">
+    <meta name="description" content="Dsaynt is a new brand and your go-to destination for premium denim jeans. Discover stylish, durable pieces designed to fit every body type and lifestyle">
+    <style>
+        th {
+            font-size: 0.75em;
+        }
+
+        blockquote {
+            color: #000;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+          .nav-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: none; /* Hidden by default, shown on mobile */
+        }
+
+          .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0 10px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .icon-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input-container {
+            display: none;
+            position: relative;
+        }
+
+        .search-input-container.active {
+            display: block;
+        }
+
+        .search-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 200px;
+        }
+
+        .content img {
+            width: 100%;
+            height: auto;
+            max-width: 900px;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block; /* Show menu icon on small screens */
+            }
+
+            .nav-menu {
+                display: none; /* Hide full menu on small screens */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .sidebar, .overlay {
+                display: none; /* Hide sidebar on large screens */
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+     <div class="title">
+        <h1><a href="index.html"><img src="logo.png" alt="logo"></a></h1>
+    </div>
+
+    <div class="nav-container">
+        <!-- Nav icon only visible on mobile -->
+        <span class="menu-icon" id="nav-icon">&#9776;</span>
+        <!-- Full menu visible on larger screens -->
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+        </ul>
+    </div>
+
+   
+    <div class="icon-container">
+        <!-- <a href="#" class="icon" id="search-icon"><img src="search.png" alt="Search"></a>
+        <div class="search-input-container" id="search-input-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search items...">
+        </div>
+        <a href="user.html" class="icon"><img src="user.png" alt="User"></a> -->
+        <a href="cart.html" class="icon cart-count" id="cart-icon"><img src="cart.png" alt="Cart"><span
+                id="cart-count">0</span></a>
+    </div>
+</header>
+
+<!-- Sidebar Navigation -->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" id="close-sidebar">&times;</a>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+</div>
+
+<!-- Overlay for sidebar -->
+<div id="overlay" class="overlay"></div>
+
+    <main class="content">
+        <div class="shop-items">
+            <!-- Example Item 1 -->
+            <div class="shop-item">
+                <img src="item1.JPG" alt="Item 1">
+                <h6>Blue Puzzled Print - Straight</h6>
+                <p>$50.00</p>
+                <button onclick="openModal('item1')">View Details</button>
+            </div>
+            <!-- Example Item 2 -->
+            <div class="shop-item">
+                <img src="item2.JPEG" alt="Item 2">
+                <h6>Washed Blue Polished - Flare</h6>
+                <p>$60.00</p>
+                <button onclick="openModal('item2')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item3.jpg" alt="Item 3">
+                <h6>Denim Street Paint - Baggy</h6>
+                <p>$45.00</p>
+                <button onclick="openModal('item3')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item4.jpg" alt="Item 4">
+                <h6>Spider Webbed Denim - Baggy</h6>
+                <p>$65.00</p>
+                <button onclick="openModal('item4')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item5.HEIC" alt="Item 5">
+                <h6>Tie Me Up Denim - Straight</h6>
+                <p>$60.00</p>
+                <button onclick="openModal('item5')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item6.jpg" alt="Item 6">
+                <h6>Tiger Dollar Ripped Jeans</h6>
+                <p>$50.00</p>
+                <button onclick="openModal('item6')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item7.HEIC" alt="Item 7">
+                <h6>Camo Stripped Black Pant - Flare</h6>
+                <p>$65.00</p>
+                <button onclick="openModal('item7')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item8.JPG" alt="Item 8">
+                <h6>Street Washed Distressed Ruffled Denim - Baggy</h6>
+                <p>$70.00</p>
+                <button onclick="openModal('item8')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item9.jpg" alt="Item 9">
+                <h6>Vintage Jorts</h6>
+                <p>$40.00</p>
+                <button onclick="openModal('item9')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item10.JPG" alt="Item 10">
+                <h6>Heavy Pocketed Denim - baggy</h6>
+                <p>$70.00</p>
+                <button onclick="openModal('item10')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item11.JPG" alt="Item 11">
+                <h6>Heir Error Jorts</h6>
+                <p>$40.00</p>
+                <button onclick="openModal('item11')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item12.JPG" alt="Item 12">
+                <h6>Emoji Print Straight Pant </h6>
+                <p>$40.00</p>
+                <button onclick="openModal('item12')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item13.JPG" alt="Item 13">
+                <h6>Fish Net Baggy Pants </h6>
+                <p>$55.00</p>
+                <button onclick="openModal('item13')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item14.jpg" alt="Item 14">
+                <h6>Black Combat </h6>
+                <p>$55.00</p>
+                <button onclick="openModal('item14')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item15.jpg" alt="Item 15">
+                <h6>Lazy Print </h6>
+                <p>$55.00</p>
+                <button onclick="openModal('item15')">View Details</button>
+            </div>
+            <!-- Add more items as needed -->
+            <div class="shop-item">
+                <img src="item16.JPG" alt="Item 16">
+                <h6>BarbWire Pocketed Jeans</h6>
+                <p>$70.00</p>
+                <button onclick="openModal('item16')">View Details</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="slider-container">
+                <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+                <img id="modalImage" class="slider-img" src="" alt="Item">
+                <span class="next" onclick="changeSlide(1)">&#10095;</span>
+            </div>
+            <h3 id="modalTitle">Item Title</h3>
+            <p id="modalPrice">$0.00</p>
+            <label for="size">Size:</label>
+            <select id="size" name="size">
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1">
+            <button class="action-button" onclick="addToCart()">Add to Cart</button>
+            <button class="action-button" onclick="buyNow()">Buy Now</button>
+        </div>
+    </div>
+   
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h2 class="footer-title">About Us</h2>
+                <p>Learn about our mission, vision, and values. We are dedicated to providing the best service and products to our customers.</p>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-title">Quick Links</h2>
+                <ul>
+                   <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-title">Contact Us</h2>
+                <p>Email: <a href="mailto:Dsaynt@gmail.com">Info@Dsaynt.com</a></p>
+                <p>Phone: 1 (204) 951-6355</p>
+                <p>Address: Winnipeg, Manitoba</p>
+            </div>
+            <div class="footer-section">
+                <h2 class="footer-title">Follow Us</h2>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><img src="twitter.jpg.avif" alt="Twitter"></a>
+                    <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dsaynt. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSlideIndex = 0;
+        let currentImages = [];
+
+         function openModal(item) {
+            const modal = document.getElementById('itemModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPrice = document.getElementById('modalPrice');
+
+
+            // Example data - replace with actual data
+         const itemsData = {
+                item1: {
+                    images: ['item1.JPG', 'item1-2.JPG', 'item1-3.JPG'], 
+                    title: 'Blue Puzzled Print - Straight', 
+                    price: '$50.00'
+                },
+                item2: {
+                    images: ['item2.JPEG', 'item2-2.JPEG'], 
+                    title: 'Washed Blue Polished - Flare', 
+                    price: '$60.00'
+                },
+               item3: {
+                    images: ['item3.jpg', 'item3-2.jpg', 'item3-3.jpg'], 
+                    title: 'Denim Street Paint - Baggy', 
+                    price: '$45.00'
+                },
+               item4: {
+                    images: ['item4.jpg', 'item4-2.jpg', 'item4-3.jpg'], 
+                    title: 'Spider Webbed Denim - Baggy', 
+                    price: '$65.00'
+                },
+                item5: {
+                    images: ['item5.HEIC', 'item5-2.JPG', 'item5-3.JPG'], 
+                    title: 'Tie Me Up Denim - Straight', 
+                    price: '$60.00'
+                },
+                 item6: {
+                    images: ['item6.jpg', 'item6-2.JPG', 'item6-3.JPG'], 
+                    title: 'Tiger Dollar Ripped Jean', 
+                    price: '$60.00'
+                },
+                item7: {
+                    images: ['item7.HEIC', 'item7-2.JPG', 'item7-3.JPG'], 
+                    title: 'Camo Stripped Black Pant - Flare', 
+                    price: '$65.00'
+                },
+                item8: {
+                    images: ['item8.JPG', 'item8-2.JPG', 'item8-3.JPG'], 
+                    title: 'Street Washed Distressed Ruffled Denim - Baggy', 
+                    price: '$70.00'
+                },
+                 item9: {
+                    images: ['item9.jpg', 'item9-2.JPG', 'item9-3.JPG'], 
+                    title: 'Vintage Jorts', 
+                    price: '$40.00'
+                },
+                 item10: {
+                    images: ['item10.JPG', 'item10-2.JPG', 'item10-3.JPG'], 
+                    title: 'Heavy Pocket', 
+                    price: '$70.00'
+                },
+                 item11: {
+                    images: ['item11.JPG', 'item11-2.JPG', 'item11-3.JPG'], 
+                    title: 'Heir Error Jorts', 
+                    price: '$40.00'
+                },
+                 item12: {
+                    images: ['item12.JPG', 'item12-2.JPG', 'item12-3.JPG'], 
+                    title: 'Emoji Print Straight Pant', 
+                    price: '$40.00'
+                },
+                 item13: {
+                    images: ['item13.JPG', 'item13-2.JPG', 'item13-3.JPG'], 
+                    title: 'Fish Net Baggy Pants', 
+                    price: '$55.00'
+                },
+                 item14: {
+                    images: ['item14.jpg', 'item14-2.jpg', 'item14-3.JPG'], 
+                    title: 'Black Combat', 
+                    price: '$55.00'
+                },
+                item15: {
+                    images: ['item15.jpg', 'item15-2.JPG', 'item15-3.JPG'], 
+                    title: 'Lazy Print', 
+                    price: '$55.00'
+                },
+                item16: {
+                    images: ['item16.JPG', 'item16-2.JPG', 'item16-3.JPG'], 
+                    title: 'BarbWire Pocketed Jeans', 
+                    price: '$70.00'
+                },
+            };
+
+            // Load the selected item's images, title, and price
+            currentImages = itemsData[item]?.images || [];
+            modalTitle.textContent = itemsData[item]?.title || 'Item Title';
+            modalPrice.textContent = itemsData[item]?.price || '$0.00';
+
+            // Show the first image
+            currentSlideIndex = 0;
+            updateModalImage();
+
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('itemModal').style.display = 'none';
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = currentImages.length - 1;
+            } else if (currentSlideIndex >= currentImages.length) {
+                currentSlideIndex = 0;
+            }
+            updateModalImage();
+        }
+
+     function updateModalImage() {
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = currentImages[currentSlideIndex];
+
+    // Ensure proper loading and resizing of the image
+    modalImage.onload = function () {
+        modalImage.style.maxWidth = '100%';
+        modalImage.style.maxHeight = '100%';
+        modalImage.style.objectFit = 'contain'; // Adjust this to 'cover' or 'fill' based on desired fit
+    };
+
+    // Error handler in case the image doesn't load correctly
+    modalImage.onerror = function () {
+        console.error('Error loading image:', modalImage.src);
+        modalImage.src = 'placeholder.jpg'; // Fallback image if the src fails
+    };
+}
+      
+
+        function addToCart() {
+    var modalTitle = document.getElementById('modalTitle').textContent;
+    var modalPrice = document.getElementById('modalPrice').textContent;
+    var size = document.getElementById('size').value;
+    var quantity = document.getElementById('quantity').value;
+
+    var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    cartItems.push({ title: modalTitle, price: modalPrice, size: size, quantity: quantity });
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+    updateCartCount();
+}
+
+        function buyNow() {
+            var modalTitle = document.getElementById('modalTitle').textContent;
+            var modalPrice = document.getElementById('modalPrice').textContent;
+            var size = document.getElementById('size').value;
+            var quantity = document.getElementById('quantity').value;
+
+            var cartItems = [{ title: modalTitle, price: modalPrice, size: size, quantity: quantity }];
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+            window.location.href = 'cart.html';
+        }
+
+
+        function updateCartCount() {
+    var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    var cartCount = cartItems.length;
+    document.getElementById('cart-count').textContent = cartCount;
+}
+
+function loadCartCount() {
+    updateCartCount();
+}
+
+window.onload = loadCartCount;
+
+       
+
+// Toggle the sidebar navigation
+    document.getElementById('nav-icon').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '250px';
+        document.getElementById('overlay').style.display = 'block';
+    });
+
+    // Close the sidebar
+    document.getElementById('close-sidebar').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '0';
+        document.getElementById('overlay').style.display = 'none';
+    });
+
+    // Close sidebar when clicking outside
+    document.getElementById('overlay').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '0';
+        this.style.display = 'none';
+    });
+
+    </script>
+</body>
+</html>

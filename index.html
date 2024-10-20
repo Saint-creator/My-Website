@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>Dsaynt Clothing Brand</title>
+    <link rel="stylesheet" href="Dsaynt.css">
+    <meta name="description" content="Dsaynt is a new brand and your go-to destination for premium denim jeans. Discover stylish, durable pieces designed to fit every body type and lifestyle">
+    <style>
+        th {
+            font-size: 0.75em;
+        }
+
+        blockquote {
+            color: #000;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+
+          .nav-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: none; /* Hidden by default, shown on mobile */
+        }
+
+          .nav-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin: 0 10px;
+        }
+
+        .nav-menu.active {
+            display: block;
+        }
+
+        .icon-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input-container {
+            display: none;
+            position: relative;
+        }
+
+        .search-input-container.active {
+            display: block;
+        }
+
+        .search-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 200px;
+        }
+
+        .content img {
+            width: 100%;
+            height: auto;
+            max-width: 900px;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #fff;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block; /* Show menu icon on small screens */
+            }
+
+            .nav-menu {
+                display: none; /* Hide full menu on small screens */
+            }
+        }
+
+        @media (min-width: 769px) {
+            .sidebar, .overlay {
+                display: none; /* Hide sidebar on large screens */
+            }
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+     <div class="title">
+        <h1><a href="index.html"><img src="logo.png" alt="logo"></a></h1>
+    </div>
+
+    <div class="nav-container">
+        <!-- Nav icon only visible on mobile -->
+        <span class="menu-icon" id="nav-icon">&#9776;</span>
+        <!-- Full menu visible on larger screens -->
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="shop.html">SHOP</a></li>
+        </ul>
+    </div>
+
+   
+    <div class="icon-container">
+        <!-- <a href="#" class="icon" id="search-icon"><img src="search.png" alt="Search"></a>
+        <div class="search-input-container" id="search-input-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Search items...">
+        </div>
+        <a href="user.html" class="icon"><img src="user.png" alt="User"></a> -->
+        <a href="cart.html" class="icon cart-count" id="cart-icon"><img src="cart.png" alt="Cart"><span
+                id="cart-count">0</span></a>
+    </div>
+</header>
+
+<!-- Sidebar Navigation -->
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" id="close-sidebar">&times;</a>
+    <a href="index.html">HOME</a>
+    <a href="shop.html">SHOP</a>
+   
+</div>
+
+<!-- Overlay for sidebar -->
+<div id="overlay" class="overlay"></div>
+
+<main class="content">
+    <img src="main.jpg" alt="image">
+    <div class="text">
+        <p>
+            <strong>THE BEST JEANS BRAND: THE ONE AND ONLY</strong>
+        </p>
+        <a href="shop.html" class="shop-now-button">Shop Now</a>
+    </div>
+    <div class="marquee-container">
+        <div class="marquee">Dsaynt is a new brand and your go-to destination for premium denim jeans. Discover stylish,
+            durable pieces designed to fit every body type and lifestyle
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h2 class="footer-title">About Us</h2>
+            <p>Learn about our mission, vision, and values. We are dedicated to providing the best service and products
+                to our customers.</p>
+        </div>
+        <div class="footer-section">
+            <h2 class="footer-title">Quick Links</h2>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h2 class="footer-title">Contact Us</h2>
+            <p>Email: <a href="mailto:dsayntcollections@gmail.com">Info@Dsaynt.com</a></p>
+            <p>Phone: 1 (204) 951-6355</p>
+            <p>Address: Winnipeg, Manitoba</p>
+        </div>
+        <div class="footer-section">
+            <h2 class="footer-title">Follow Us</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61564138736239" class="social-icon" target="_blank" rel="noopener noreferrer"> <img src="facebook.png" alt="Facebook">
+                <a href="https://www.instagram.com/dsaynt_collections/" class="social-icon" target="_blank" rel="noopener noreferrer"> <img src="instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Dsaynt. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function updateCartCount() {
+        var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        var cartCount = cartItems.length;
+        document.getElementById('cart-count').textContent = cartCount;
+    }
+
+    function loadCartCount() {
+        updateCartCount();
+    }
+
+    window.onload = loadCartCount;
+
+    // Toggle the sidebar navigation
+    document.getElementById('nav-icon').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '250px';
+        document.getElementById('overlay').style.display = 'block';
+    });
+
+    // Close the sidebar
+    document.getElementById('close-sidebar').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '0';
+        document.getElementById('overlay').style.display = 'none';
+    });
+
+    // Close sidebar when clicking outside
+    document.getElementById('overlay').addEventListener('click', function () {
+        document.getElementById('mySidebar').style.width = '0';
+        this.style.display = 'none';
+    });
+
+    // // Show the search input when search icon is clicked
+    // document.getElementById('search-icon').addEventListener('click', function (e) {
+    //     e.preventDefault();
+    //     document.getElementById('search-input-container').classList.toggle('active');
+    // });
+
+    // // Dynamic search handler
+    // document.getElementById('search-input').addEventListener('keyup', function () {
+    //     const searchQuery = this.value.toLowerCase();
+    //     const items = [
+    //         // Example items for dynamic search
+    //     ];
+    // });
+</script>
+
+</body>
+</html>
